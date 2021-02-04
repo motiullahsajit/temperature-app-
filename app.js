@@ -1,7 +1,12 @@
+//can use api in var
+// apikey ='32080273d50f07d0d025b1d2f54ae46b'
+//time
 function checkWeather() {
     document.getElementById('search-btn').addEventListener('click', function () {
+        const apikey = '32080273d50f07d0d025b1d2f54ae46b';
         let searchedName = document.getElementById('searched-name');
-        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + searchedName.value + '&units=metric&appid=32080273d50f07d0d025b1d2f54ae46b')
+        // fetch('https://api.openweathermap.org/data/2.5/weather?q=' + searchedName.value + '&units=metric&appid=32080273d50f07d0d025b1d2f54ae46b')
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedName.value}&units=metric&appid=${apikey}`)
             .then(res => res.json())
             .then(data => {
                 let currentTemp = document.getElementById('current-temp')
@@ -20,6 +25,9 @@ function checkWeather() {
                 let extraInfo = document.getElementById('extra-info');
                 extraInfo.innerText = `Feels like : ${feelsLike} °C, Humidity : ${humidity}%, Max-temp : ${tempMax}  °C, Min-temp : ${tempMin} °C`;
             })
+            .catch(err =>alert('Your searched place not found, please check your spelling'))
+            // searchedName.value= '';
+            // .catch(err =>console.log(err.meassage))
     })
 }
 checkWeather();
