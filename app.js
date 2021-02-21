@@ -3,7 +3,7 @@
 //time
 const apikey = '32080273d50f07d0d025b1d2f54ae46b';
 async function getCity() {
-    const city = await fetch("https://ipapi.co/json");
+    const city = await fetch("https://ipapi.co/103.113.172.11/json");
     const data = await city.json();
     return data;
 }
